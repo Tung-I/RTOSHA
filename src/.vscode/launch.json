@@ -1,0 +1,27 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Debug Sender",
+            "type": "cuda-gdb",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "program": "${workspaceFolder}/build/sender",
+            "args": "12345 /home/ubuntu/datasets/raw_video/2k_runner_pano_5s.yuv", 
+            "stopAtEntry": false,
+            "environment": [],
+            "preLaunchTask": "Build All" // Corresponds to a task defined in tasks.json
+        },
+        {
+            "name": "Debug Receiver",
+            "type": "cuda-gdb",
+            "request": "launch",
+            "cwd": "${workspaceFolder}/src",
+            "program": "$build/receiver",
+            "args": "127.0.0.1 12345 2048 1024 --fps 30 --cbr 24000 --lazy 1 --streamtime 10",
+            "stopAtEntry": false,      
+            "environment": [],
+            "preLaunchTask": "Build All" // Corresponds to a task defined in tasks.json
+        }
+    ]
+}
